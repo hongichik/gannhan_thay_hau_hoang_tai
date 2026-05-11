@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Role;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class PermissionController extends Controller
 {

@@ -56,6 +56,25 @@ return [
                     ],
                 ],
             ],
+            [
+                'text' => 'Quản lý dữ liệu',
+                'icon' => 'bi bi-database',
+                'active' => 'admin/data*',
+                'submenu' => [
+                    [
+                        'text' => 'Intrusions',
+                        'icon' => 'bi bi-file-earmark-text',
+                        'route' => 'admin.data.intrusions.index',
+                        'active' => 'admin/data/intrusions*',
+                    ],
+                    [
+                        'text' => 'Subdomains',
+                        'icon' => 'bi bi-diagram-3',
+                        'route' => 'admin.data.subdomains.index',
+                        'active' => 'admin/data/subdomains*',
+                    ],
+                ],
+            ],
         ],
     ],
 ];
