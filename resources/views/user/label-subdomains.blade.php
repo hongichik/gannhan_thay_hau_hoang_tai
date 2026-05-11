@@ -94,6 +94,17 @@
                             <button type="submit" class="btn w-100 {{ ($currentLabel && $currentLabel->label === 'no') ? 'btn-danger' : 'btn-outline-danger' }}">No</button>
                         </form>
                     </div>
+
+                    <div class="d-flex justify-content-between mt-3">
+                        @if ($prevSubdomain)
+                            <a href="{{ route('user.label.subdomains', ['edit_subdomain_id' => $prevSubdomain->id, 'relabel' => $relabelMode ? 1 : 0]) }}" class="btn btn-outline-secondary">&larr; Trước</a>
+                        @else
+                            <span></span>
+                        @endif
+                        @if ($nextSubdomain)
+                            <a href="{{ route('user.label.subdomains', ['edit_subdomain_id' => $nextSubdomain->id, 'relabel' => $relabelMode ? 1 : 0]) }}" class="btn btn-outline-secondary">Tiếp &rarr;</a>
+                        @endif
+                    </div>
                 </div>
             </div>
         @else

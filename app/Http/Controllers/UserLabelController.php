@@ -46,7 +46,10 @@ class UserLabelController extends Controller
             ? IntrusionLabel::where('user_id', $userId)->where('intrusion_id', $intrusion->id)->first()
             : null;
 
-        return view('user.label-intrusions', compact('intrusion', 'total', 'done', 'editingIntrusionId', 'currentLabel', 'relabelMode'));
+        $prevIntrusion = $intrusion ? Intrusion::where('id', '<', $intrusion->id)->orderBy('id', 'desc')->first() : null;
+        $nextIntrusion = $intrusion ? Intrusion::where('id', '>', $intrusion->id)->orderBy('id')->first() : null;
+
+        return view('user.label-intrusions', compact('intrusion', 'total', 'done', 'editingIntrusionId', 'currentLabel', 'relabelMode', 'prevIntrusion', 'nextIntrusion'));
     }
 
     public function intrusionHistory(Request $request): View
@@ -143,7 +146,10 @@ class UserLabelController extends Controller
             ? SubdomainLabel::where('user_id', $userId)->where('subdomain_id', $subdomain->id)->first()
             : null;
 
-        return view('user.label-subdomains', compact('subdomain', 'total', 'done', 'editingSubdomainId', 'currentLabel', 'relabelMode'));
+        $prevSubdomain = $subdomain ? Subdomain::where('id', '<', $subdomain->id)->orderBy('id', 'desc')->first() : null;
+        $nextSubdomain = $subdomain ? Subdomain::where('id', '>', $subdomain->id)->orderBy('id')->first() : null;
+
+        return view('user.label-subdomains', compact('subdomain', 'total', 'done', 'editingSubdomainId', 'currentLabel', 'relabelMode', 'prevSubdomain', 'nextSubdomain'));
     }
 
     public function subdomainHistory(Request $request): View

@@ -63,6 +63,17 @@
                             </div>
                         @endfor
                     </div>
+
+                    <div class="d-flex justify-content-between mt-3">
+                        @if ($prevIntrusion)
+                            <a href="{{ route('user.label.intrusions', ['edit_intrusion_id' => $prevIntrusion->id, 'relabel' => $relabelMode ? 1 : 0]) }}" class="btn btn-outline-secondary">&larr; Trước</a>
+                        @else
+                            <span></span>
+                        @endif
+                        @if ($nextIntrusion)
+                            <a href="{{ route('user.label.intrusions', ['edit_intrusion_id' => $nextIntrusion->id, 'relabel' => $relabelMode ? 1 : 0]) }}" class="btn btn-outline-secondary">Tiếp &rarr;</a>
+                        @endif
+                    </div>
                 </div>
             </div>
         @else
