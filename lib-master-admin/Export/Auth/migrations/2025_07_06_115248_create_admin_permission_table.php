@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->string('name', 191)->unique();
+            $table->string('slug', 191)->unique();
             $table->string('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->string('name', 191)->unique();
+            $table->string('slug', 191)->unique();
             $table->string('description')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
@@ -30,7 +30,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();  
+            $table->string('email', 191)->unique();  
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
